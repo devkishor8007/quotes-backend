@@ -1,0 +1,83 @@
+## signup 
+mutation signup($user: signupInput!) {
+  signup(input: $user){
+    username
+    email
+    password
+  }
+}
+
+Query Variables
+{
+  "user":{
+    "email": "hellome@gmail.com",
+    "password": "123456",
+    "username": "hello"
+  }
+}
+
+
+## signin
+mutation login($user: signinInput!) {
+  signin(input: $user){
+    token
+  }
+}
+
+Query Variables
+{
+  "user":{
+    "email": "hello@gmail.com",
+    "password": "123456"
+  }
+}
+
+## get all login users
+query getAllUser {
+  users {
+    username
+    email
+    password
+  }
+}
+
+
+## create quotes
+mutation quotes($new: quoteInput!) {
+  createQuote(input:$new)
+}
+
+Query Variables
+{
+  "new":{
+    "category": "happy",
+    "desc": "There is no path to happiness; happiness is the path"
+  }
+}
+
+HTTP HEADERS
+{
+  "authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzFhZWRiNTI0ZjJmOTVmMmU0YmQ0OGIiLCJpYXQiOjE2NjI3MTA3OTd9.HOZI3NNfqd7odjHMulxZFxVOtOIIg5ou8-8AANcLrbg"
+}
+
+
+## get all user with added quotes
+query add {
+  users {
+    email
+    password
+    quotes {
+      category
+      desc
+      by
+    }
+  }
+}
+
+## get all quotes 
+query gettingAllQuotes{
+  quotes{
+    category
+    desc
+  }
+}
